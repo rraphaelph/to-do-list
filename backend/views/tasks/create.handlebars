@@ -1,0 +1,16 @@
+<h1>Create Task</h1>
+<form action="/tasks/add" method="POST">
+    <div class="form-control">
+        <label for = "title">Title</label>
+        <input type="text" name="title" placeholder="O que vc vai fazer?">
+    </div>
+    <div class="form-control">
+        <label for = "title">Description</label>
+        <textarea name="description" placeholder="Descreva a tarefa..."></textarea>
+    </div>
+    <div class="form-control">
+        <label for = "title"> Due Date</label>
+        <input type="date" name="duedate">
+    </div>
+    <input type="submit" value="Criar">
+</form>

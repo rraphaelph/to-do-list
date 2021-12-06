@@ -1,0 +1,60 @@
+<div class="home-header">
+    {{#if search}}
+    <h1>Are you looking for: <span>{{search}}</span></h1>
+        {{#if tasksQty }}
+            <p>Were found <span>{{task}}</span> task(s)</p>
+        {{else}}
+            <p>Not foud task for this term <span>{{search}}</span></p>
+        {{/if}}
+    {{else}}
+    <h1>Search <span>Tasks</span></h1>
+    {{/if}}
+    <form action="/search" method="GET">
+    
+        <input type="text" name="search" placeholder="Search">
+        
+        <input type="submit" value="search">
+    </form>
+    <div class="order-container">
+        <span>Order by</span>  
+        <form action="/search" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i> new</button>
+        </form>
+        <form action="/search" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi bi-arrow-down"></i> older</button>
+        </form>
+        <a href="/search">Delete</a>
+    </div>
+</div>
+<h1>Search</h1>
+<ul class="task-list">
+    {{#each tasks}}
+    
+    <li>
+         {{#if this.hide}}
+            <form action="/tasks/updatestatusHide" method="POST">
+            <input type ="hidden" name="id" value={{this.id}}>
+            <input type ="hidden" name="hide" value={{this.hide}}>
+            <button type="submit">
+                <i class="bi bi-eye-slash"></i></a>   
+            </button>
+            </form>
+        {{else}} 
+        
+        {{#if this.done}}
+        <a href="/tasks/edit/{{this.id}}" class="title done">{{this.title}}</a>  
+        {{else}} 
+        <a href="/tasks/edit/{{this.id}}"  class="title">{{this.title}}</a> 
+        {{/if}}  
+
+       
+        
+
+    </li>
+        {{/if}}
+    {{/each}}
+</div>
