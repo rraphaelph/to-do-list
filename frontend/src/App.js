@@ -27,6 +27,9 @@ function App() {
         <Route path="/edit/:id" component={Edit}>
           <Edit />
         </Route>
+        <Route path="/">
+          <Home />
+        </Route>
       </Switch>
       </Container>
     </Router>
